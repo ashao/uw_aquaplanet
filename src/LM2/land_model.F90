@@ -118,6 +118,8 @@ public land_model_end           ! finish land model calculations
 public land_model_restart       ! dummy routines
 public update_land_model_fast   ! fast time-scale update of the land
 public update_land_model_slow   ! slow time-scale update of the land
+public atm_lnd_bnd_type_chksum
+public land_data_type_chksum
 
 public Lnd_stock_pe             ! calculate and return total amount of requested quantitiy per PE
 ! ==== end of public interfaces ==============================================
@@ -964,7 +966,19 @@ integer :: n
 
 end subroutine define_cube_mosaic
 ! </SUBROUTINE>
+!> Dummy routine for the land type checksums
+subroutine land_data_type_chksum(id, timestep, Land)
+    character(len=*), intent(in) :: id
+    integer         , intent(in) :: timestep
+    type  (land_data_type), intent(in) :: Land
+end subroutine land_data_type_chksum
 
+!> Dummy routine for the atmos_land_boundary checksum
+subroutine atm_lnd_bnd_type_chksum(id, timestep, Atmos_land_boundary)
+    character(len=*), intent(in) :: id
+    integer         , intent(in) :: timestep
+    type(atmos_land_boundary_type), intent(in)     :: Atmos_land_boundary
+end subroutine atm_lnd_bnd_type_chksum
 ! <DIAGFIELDS>
 !   <NETCDF NAME="lonb" UNITS="degrees_E">
 !     Longitude cell boundaries
